@@ -12,7 +12,7 @@ layout: default
   {%- if site.posts.size > 0 -%}
   <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
   <ul class="post-list">
-    {%- assign posts = site.posts  | where "category", "golang" -%}
+    {%- assign posts = site.posts  | where: "category", "golang" -%}
     {%- for post in posts -%}
     {%- if post.category == "golang" -%}
     <li>
