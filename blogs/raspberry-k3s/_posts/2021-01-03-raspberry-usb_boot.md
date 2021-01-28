@@ -10,7 +10,7 @@ categories: raspberry
 
 microSD card (> 4Gb)
 downloaded raspberry pi image and unzip it \
-(https://downloads.raspberrypi.org/raspios_arm64/images/) \
+[Raspberry PI Image](https://downloads.raspberrypi.org/raspios_arm64/images/) \
 installed tool to flash the card (dd, Raspberry Pi Imager)
 
 ## Step 1
