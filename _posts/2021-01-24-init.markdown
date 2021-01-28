@@ -1,7 +1,0 @@
----
-layout: post
-title:  "Welcome to the geek space blog"
-date:   2021-01-24 17:25:38 +0100
-categories: projects, design, ideas, thoughts
----
-# First article in the blog
