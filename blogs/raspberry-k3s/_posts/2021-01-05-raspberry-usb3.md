@@ -4,8 +4,8 @@ title:  "If you have a Raspberry Pi 4 and are getting bad speeds transferring da
 date:   2021-01-05 17:25:38 +0100
 categories: raspberry
 ---
-# If you have a Raspberry Pi 4 and are getting bad speeds transferring data to/from USB3.0 SSDs, read this
-## The most common symptoms of a misbehaving UAS device are
+## If you have a Raspberry Pi 4 and are getting bad speeds transferring data to/from USB3.0 SSDs, read this
+### The most common symptoms of a misbehaving UAS device are
 
 Extremely slow performance - in the kilobytes per second range \
 Frequent disconnects-reconnects of the device with the desktop repeatedly displaying the "removable medium inserted" dialogue box \
@@ -35,7 +35,7 @@ the usb-storage driver has a "quirks" option for this purpose. As UAS is built-i
 to allow the root filesystem to be installed on an SSD, the quirk needs to go into cmdline.txt as a module parameter. \
 This parameter matches the USB Vendor ID (vid), Product ID (pid) and overlays the specified quirks that disable specific features for this device.
 
-### 1. Finding the VID and PID of your USB SSD
+#### 1. Finding the VID and PID of your USB SSD
    Disconnect the USB SSD. In a terminal window, run the command sudo dmesg -C. \
    Now, plug in the SSD and run dmesg with no parameters. \
    You should get output that looks like this:
@@ -53,7 +53,7 @@ This parameter matches the USB Vendor ID (vid), Product ID (pid) and overlays th
 ```
 The idVendor and idProduct are the two hexadecimal numbers you need to take a note of.
 
-#### 1a. Multiple SSDs
+##### 1a. Multiple SSDs
 If you have multiple USB SSD devices plugged into a single Pi 4, \
 then for each device experiencing issues repeat Step 1 above and make a note of each idVendor and idProduct pair. \
 For multiple devices with different VID:PID pairs, expand the parameter \
@@ -61,14 +61,14 @@ with a comma between each vid:pid:u triplet like this: usb-storage.quirks=0123:4
 
 Save the file and exit the editor.
 
-### 2. Add the quirks to /boot/cmdline.txt
+#### 2. Add the quirks to /boot/cmdline.txt
    Run a text editor as root - sudo nano /boot/cmdline.txt from the console or sudo leafpad /boot/cmdline.txt from the desktop.
    At the start of the line of parameters, add the text usb-storage.quirks=aaaa:bbbb:u where aaaa is the idVendor \
    for your device and bbbb is the idProduct. \
    So, with the device above the string will be usb-storage.quirks=2109:0715:u.
 
-### 3. Reboot.
-### 4. Check that it worked
+#### 3. Reboot.
+#### 4. Check that it worked
    To check that the quirk has been applied successfully, run dmesg | grep usb-storage and check that the VID and PID is listed as having a quirk applied:
    Code: Select all
 ```
